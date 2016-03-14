@@ -25,10 +25,10 @@
   </div>
   <div class="field">
     <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= f.select(:state, Store::STATES_LIST) %>
   </div>
   <div class="field">
-    <%= f.label :zip %><br>
+    <br><%= f.label :zip %><br>
     <%= f.text_field :zip %>
   </div>
   <div class="field">
@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :active %><br>
-    <%= f.check_box :active %>
+    <%= f.check_box :active%>
   </div>
   <div class="actions">
     <%= f.submit %>
