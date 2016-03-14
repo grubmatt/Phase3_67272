@@ -24,7 +24,7 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(assignment_params)
     if @assignment.save
-      redirect_to assignment_path(@author), notice: "#{@assignment.id} was added to the system."
+      redirect_to assignments_url, notice: "#{@assignment.employee.proper_name} is assigned to #{@assignment.store.name}."
     else
       render action: 'new'
     end
@@ -32,7 +32,7 @@ class AssignmentsController < ApplicationController
 
   def update
     if @assignment.update(assignment_params)
-      redirect_to assignment_path(@author), notice: "#{@assignment.id} was revised in the system."
+      redirect_to assignments_url, notice: "#{@assignment.employee.proper_name}'s assignment to #{@assignment.store.name} is updated."
     else
       render action: 'edit'
     end
@@ -42,7 +42,7 @@ class AssignmentsController < ApplicationController
   # DELETE /assignments/1.json
   def destroy
     @assignment.destroy
-    redirect_to assignments_url
+    redirect_to assignments_url, notice: "Successfully removed #{@assignment.employee.proper_name} from #{@assignment.store.name}."
   end
 
   private

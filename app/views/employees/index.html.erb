@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Employees</h1>
+<h1>Current Employees</h1>
 
 <table>
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
+      <th>Name</th>
       <th>Ssn</th>
       <th>Date of birth</th>
       <th>Phone</th>
@@ -19,8 +18,7 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
-        <td><%= employee.first_name %></td>
-        <td><%= employee.last_name %></td>
+        <td><%= employee.name %></td>
         <td><%= employee.ssn %></td>
         <td><%= employee.date_of_birth %></td>
         <td><%= employee.phone %></td>
