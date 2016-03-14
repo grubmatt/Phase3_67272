@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
-  end
+  end 
 
   # GET /employees/1/edit
   def edit
@@ -24,7 +24,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
-      redirect_to employee_path(@employee), notice: "#{@employee.name} was added to the system."
+      redirect_to employee_path(@employee), notice: "Successfully created #{@employee.proper_name}."
     else
       render action: 'new'
     end
@@ -32,7 +32,7 @@ class EmployeesController < ApplicationController
 
   def update
     if @employee.update(employee_params)
-      redirect_to employee_path(@employee), notice: "#{@employee.name} was revised in the system."
+      redirect_to employee_path(@employee), notice: "Successfully updated #{@employee.proper_name}."
     else
       render action: 'edit'
     end
@@ -42,7 +42,7 @@ class EmployeesController < ApplicationController
   # DELETE /employees/1.json
   def destroy
     @employee.destroy
-    redirect_to employees_url
+    redirect_to employees_url, notice: "Successfully removed #{@employee.proper_name} from the AMC system."
   end
 
   private

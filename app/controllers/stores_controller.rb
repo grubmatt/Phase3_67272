@@ -24,15 +24,15 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(store_params)
     if @store.save
-      redirect_to store_path(@store), notice: "#{@store.name} was added to the system."
+      redirect_to store_path(@store), notice: "Successfully created #{@store.name}."
     else
       render action: 'new'
     end
   end
 
   def update
-    if @assignment.update(assignment_params)
-      redirect_to store_path(@store), notice: "#{@store.name} was revised in the system."
+    if @store.update(store_params)
+      redirect_to store_path(@store), notice: "Successfully updated #{@store.name}."
     else
       render action: 'edit'
     end
@@ -42,7 +42,7 @@ class StoresController < ApplicationController
   # DELETE /stores/1.json
   def destroy
     @store.destroy
-    redirect_to stores_url
+    redirect_to stores_url, notice: "Successfully removed #{@store.name} from the AMC system."
   end
 
   private
