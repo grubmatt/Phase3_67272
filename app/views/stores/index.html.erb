@@ -15,7 +15,7 @@
   <tbody>
     <% @stores.each do |store| %>
       <tr>
-        <td><%= store.name %></td>
+        <td><%= link_to "#{store.name}", store %></td>
         <td><%= number_to_phone(store.phone) %></td>
         <td><%= store.staff_count %></td>
         <td><%= link_to 'Show', store %></td>
