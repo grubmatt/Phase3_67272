@@ -10,6 +10,11 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
+    assignments = @store.assignments.current
+    @current_employees = Array.new
+    assignments.each do |assignment|
+      @current_employees << assignment.employee
+    end
   end
 
   # GET /stores/new

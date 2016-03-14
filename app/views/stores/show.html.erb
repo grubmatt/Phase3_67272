@@ -6,34 +6,19 @@
 </p>
 
 <p>
-  <strong>Street:</strong>
-  <%= @store.street %>
+  <strong>Address:</strong>
+  <%= @store.street %> <br>
+  <%= @store.city %>, <%= @store.state %> <%= @store.zip %>
 </p>
 
 <p>
-  <strong>City:</strong>
-  <%= @store.city %>
+  <strong>Current Employees:</strong>
+  <% @current_employees.each do |employee| %>
+    <%= employee.name %> <br>
+  <% end %>
 </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @store.state %>
-</p>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @store.zip %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @store.phone %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @store.active %>
-</p>
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>

@@ -23,11 +23,13 @@ class Store < ActiveRecord::Base
   scope :active,       -> { where(active: true) }
   scope :inactive,     -> { where(active: false) }
   
-  
   # Misc Constants
   STATES_LIST = [['Ohio', 'OH'],['Pennsylvania', 'PA'],['West Virginia', 'WV']]
   
-  
+  def staff_count
+    self.assignments.current.length
+  end
+
   # Callback code
   # -----------------------------
   private
