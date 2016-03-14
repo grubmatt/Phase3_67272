@@ -1,11 +1,12 @@
 <p>
-  <a href="#">Home</a>&nbsp;&nbsp;::&nbsp;&nbsp;
-  <a href="#">About Us</a>&nbsp;&nbsp;::&nbsp;&nbsp;
-  <a href="#">Contact Us</a>&nbsp;&nbsp;::&nbsp;&nbsp;
+  <%= link_to "Home", home_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+  <%= link_to "About", about_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+  <%= link_to "Contact", contact_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+  <%= link_to "Privacy", privacy_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
   <a href="#">Back to top</a>
 </p>
 <div id="copyright">
-  <br />Webmaster: <%= mail_to "YOUR EMAIL", "YOUR NAME", :encode => "javascript" %>
+  <br />Webmaster: <%= mail_to "mgruber1@andrew.cmu.edu", "Matt Gruber", :encode => "javascript" %>
     &nbsp;&nbsp;Copyright 2016
   <br /><br />
 </div>
