@@ -4,15 +4,77 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>GOES HERE...</title>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
     <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <div>
-       <%= yield %>
+    <div class="contain-to-grid">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "Creamery", home_path %></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="has-dropdown">
+            <a href="#">Assignments</a>
+            <ul class="dropdown">
+              <li><%= link_to "List Assignments", assignments_path %></li>
+              <li><%= link_to "Add an Assignment", new_assignment_path %></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="left">
+          <li class="has-dropdown">
+            <a href="#">Employees</a>
+            <ul class="dropdown">
+              <li><%= link_to "List Employees", employees_path %></li>
+              <li><%= link_to "Add a Employee", new_employee_path %></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="left">
+          <li class="has-dropdown">
+            <a href="#">Stores</a>
+            <ul class="dropdown">
+              <li><%= link_to "List Stores", stores_path %></li>
+              <li><%= link_to "Add a Store", new_store_path %></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
     </div>
-    <%= javascript_include_tag "application" %>
+    <% flash.each do |name, msg| %>
+      <div class="alert-box <%= :notice ? "success" : "warning" %> radius">
+        <a href="#" class="close">&times;</a>
+        <%= msg %>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="small-8 columns">
+        <!-- MAIN CONTENT GOES HERE -->
+        <%= yield %>
+        <%= javascript_include_tag "application" %>
+      </div>
+
+      <div class="small-1 columns">
+        &nbsp;
+      </div>
+    </div>
+
+    <footer>
+      <div class="row">
+        <div class="small-6 large-centered columns">
+          <%= render partial: 'partials/footer' %>
+        </div>
+      </div> 
+    </footer>     
   </body>
 </html>
