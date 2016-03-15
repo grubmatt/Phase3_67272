@@ -1,38 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @employee.first_name %>
-</p>
+<h1>Employee Details</h1>
 
 <p>
-  <strong>Last name:</strong>
-  <%= @employee.last_name %>
-</p>
-
-<p>
-  <strong>Ssn:</strong>
-  <%= @employee.ssn %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
-  <%= @employee.date_of_birth %>
+  <strong>Name:</strong>
+  <%= @employee.name %>
 </p>
 
 <p>
   <strong>Phone:</strong>
-  <%= @employee.phone %>
+  <%= number_to_phone(@employee.phone) %>
+</p>
+
+<p>
+  <strong>Date of Birth:</strong>
+  <%= @employee.date_of_birth.strftime("%m/%d/%y") %>
+</p>
+
+<p>
+  <strong>SSN:</strong>
+  <%= @employee.ssn %>
 </p>
 
 <p>
   <strong>Role:</strong>
-  <%= @employee.role %>
+  <%= @employee.role.capitalize %>
 </p>
 
 <p>
   <strong>Active:</strong>
-  <%= @employee.active %>
+  <% if @employee.active %>
+  Yes
+  <% else %>
+  No
+  <% end %>
+</p>
+
+<p>
+  <strong>Assignment History</strong>
+  <% @assignments.each do |assignment| %>
+    <%= link_to "#{assignment.store.name}", assignment.store %> <br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
