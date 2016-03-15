@@ -18,6 +18,15 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Active:</strong>
+  <% if @store.active %>
+ 	Yes
+  <% else %>
+ 	No
+  <% end %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
