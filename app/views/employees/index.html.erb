@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @employees.each do |employee| %>
+    <% @active_employees.each do |employee| %>
       <tr>
         <td><%= link_to "#{employee.name}", employee %></td>
         <td><%= number_to_phone(employee.phone) %></td>
@@ -31,6 +31,11 @@
     <% end %>
   </tbody>
 </table>
+
+<!-- Add the pagination using will_paginate gem -->
+<span class="smtext">
+<%= will_paginate @employees, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+</span>
 
 <br>
 

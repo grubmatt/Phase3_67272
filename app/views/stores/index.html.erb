@@ -26,6 +26,11 @@
   </tbody>
 </table>
 
+<!-- Add the pagination using will_paginate gem -->
+<span class="smtext">
+<%= will_paginate @stores, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+</span>
+
 <br>
 
 <%= link_to 'New Store', new_store_path %>

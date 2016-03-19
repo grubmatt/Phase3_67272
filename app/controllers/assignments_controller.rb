@@ -4,7 +4,8 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    @current_assignments = Assignment.current.by_employee.paginate(page: params[:page]).per_page(10)
+    @past_assignments = Assignment.past.by_employee.paginate(page: params[:page]).per_page(10) 
   end
 
   # GET /assignments/1

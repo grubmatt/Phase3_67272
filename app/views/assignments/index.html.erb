@@ -14,21 +14,24 @@
   </thead>
 
   <tbody>
-    <% @assignments.each do |assignment| %>
-      <% if assignment.end_date == nil %>
-        <tr>
-          <td><%= link_to "#{assignment.store.name}", assignment.store %></td>
-          <td><%= link_to "#{assignment.employee.name}", assignment.employee %></td>
-          <td><%= assignment.pay_level %></td>
-          <td><%= assignment.start_date %></td>
-          <td><%= link_to 'Show', assignment %></td>
-          <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-          <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>  
+    <% @current_assignments.each do |assignment| %>
+      <tr>
+        <td><%= link_to "#{assignment.store.name}", assignment.store %></td>
+        <td><%= link_to "#{assignment.employee.name}", assignment.employee %></td>
+        <td><%= assignment.pay_level %></td>
+        <td><%= assignment.start_date %></td>
+        <td><%= link_to 'Show', assignment %></td>
+        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
+
+<!-- Add the pagination using will_paginate gem -->
+<span class="smtext">
+<%= will_paginate @current_assignments, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+</span>
 
 <h1>Past Assignments</h1>
 
@@ -44,22 +47,25 @@
   </thead>
 
   <tbody>
-    <% @assignments.each do |assignment| %>
-      <% if assignment.end_date != nil %>
-        <tr>
-          <td><%= link_to "#{assignment.store.name}", assignment.store %></td>
-          <td><%= link_to "#{assignment.employee.name}", assignment.employee %></td>
-          <td><%= assignment.pay_level %></td>
-          <td><%= assignment.start_date %></td>
-          <td><%= link_to 'Show', assignment %></td>
-          <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-          <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>  
+    <% @past_assignments.each do |assignment| %>
+      <tr>
+        <td><%= link_to "#{assignment.store.name}", assignment.store %></td>
+        <td><%= link_to "#{assignment.employee.name}", assignment.employee %></td>
+        <td><%= assignment.pay_level %></td>
+        <td><%= assignment.start_date %></td>
+        <td><%= link_to 'Show', assignment %></td>
+        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<!-- Add the pagination using will_paginate gem -->
+<span class="smtext">
+<%= will_paginate @past_assignments, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+</span>
 
 <%= link_to 'New Assignment', new_assignment_path %>

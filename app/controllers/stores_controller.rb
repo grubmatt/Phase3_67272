@@ -4,17 +4,16 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
-    @stores = Store.all
+    @stores = Store.active.alphabetical.paginate(page: params[:page]).per_page(10)
+    @active_stores = Store.active.alphabetical
+    @inactive_stores = Store.inactive.alphabetical
   end
 
   # GET /stores/1
   # GET /stores/1.json
   def show
-    assignments = @store.assignments.current
-    @current_employees = Array.new
-    assignments.each do |assignment|
-      @current_employees << assignment.employee
-    end
+    @current_assignments = @store.assignments.current.by_employee
+    @current_employees = @store.employees.active.alphabetical
   end
 
   # GET /stores/new
