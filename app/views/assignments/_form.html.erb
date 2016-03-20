@@ -13,12 +13,11 @@
 
   <div class="field">
     <%= f.label :store_id %><br>
-    <%= f.select(:store_id, Store.active.map(&:name)) %>
+    <%= f.collection_select :store_id, Store.active.alphabetical, :id, :name, :prompt => "Select Store" %>
   </div>
   <div class="field">
     <%= f.label :employee_id %><br>
-    <%= f.select(:employee_id, Employee.active.map(&:name)) %>
-  </div>
+    <%= f.collection_select :employee_id, Employee.active.alphabetical, :id, :name, :prompt => "Select Employee" %>  </div>
   <div class="field">
     <%= f.label :start_date %><br>
     <%= f.date_select :start_date %>

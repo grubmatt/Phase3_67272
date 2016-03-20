@@ -13,7 +13,10 @@ class StoresController < ApplicationController
   # GET /stores/1.json
   def show
     @current_assignments = @store.assignments.current.by_employee
-    @current_employees = @store.employees.active.alphabetical
+    @current_employees = Array.new
+    @current_assignments.each do |assignment|
+      @current_employees << assignment.employee
+    end
   end
 
   # GET /stores/new
